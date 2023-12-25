@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+		{% include "_head_content.html" %}
+    </head>
+    <body>
+	
+		<!-- Preloader -->
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader-outter"></div>
+                <div class="loader-inner"></div>
+
+                <div class="indicator"> 
+                    <svg width="16px" height="12px">
+                        <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                        <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <!-- End Preloader -->
+		
+		<!-- Get Pro Button -->
+		<ul class="pro-features">
+			<a class="get-pro" href="#">Get Pro</a>
+			<li class="big-title">Pro Version Available on Themeforest</li>
+			<li class="title">Pro Version Features</li>
+			<li>2+ premade home pages</li>
+			<li>20+ html pages</li>
+			<li>Color Plate With 12+ Colors</li>
+			<li>Sticky Header / Sticky Filters</li>
+			<li>Working Contact Form With Google Map</li>
+			<div class="button">
+				<a href="http://preview.themeforest.net/item/mediplus-medical-and-doctor-html-template/full_screen_preview/26665910?_ga=2.145092285.888558928.1591971968-344530658.1588061879" target="_blank" class="btn">Pro Version Demo</a>
+				<a href="https://themeforest.net/item/mediplus-medical-and-doctor-html-template/26665910" target="_blank" class="btn">Buy Pro Version</a>
+			</div>
+		</ul>
+	
+		<!-- Header Area -->
+		<header class="header">
+            {% include "_topbar.html" %}
+            {% include "_header_inner.html" %}
+		</header>
+		<!-- End Header Area -->
+		
+		<main>
+			{%block content%}
+            
+			{%endblock%}
+		</main>
+		
+		<!-- Footer Area -->
+		<footer id="footer" class="footer ">
+            {% include "_footer.html"%}
+		</footer>
+		<!--/ End Footer Area -->
+		
+		<!-- jquery Min JS -->
+        <script src="{{ url_for('static', filename = 'js/jquery.min.js')}}"></script>
+		<!-- jquery Migrate JS -->
+		<script src="{{ url_for('static', filename = 'js/jquery-migrate-3.0.0.js')}}"></script>
+		<!-- jquery Ui JS -->
+		<script src="{{ url_for('static', filename = 'js/jquery-ui.min.js')}}"></script>
+		<!-- Easing JS -->
+        <script src="{{ url_for('static', filename = 'js/easing.js')}}"></script>
+		<!-- Color JS -->
+		<script src="{{ url_for('static', filename = 'js/colors.js')}}"></script>
+		<!-- Popper JS -->
+		<script src="{{ url_for('static', filename = 'js/popper.min.js')}}"></script>
+		<!-- Bootstrap Datepicker JS -->
+		<script src="{{ url_for('static', filename = 'js/bootstrap-datepicker.js')}}"></script>
+		<!-- Jquery Nav JS -->
+        <script src="{{ url_for('static', filename = 'js/jquery.nav.js')}}"></script>
+		<!-- Slicknav JS -->
+		<script src="{{ url_for('static', filename = 'js/slicknav.min.js')}}"></script>
+		<!-- ScrollUp JS -->
+        <script src="{{ url_for('static', filename = 'js/jquery.scrollUp.min.js')}}"></script>
+		<!-- Niceselect JS -->
+		<script src="{{ url_for('static', filename = 'js/niceselect.js')}}"></script>
+		<!-- Tilt Jquery JS -->
+		<script src="{{ url_for('static', filename = 'js/tilt.jquery.min.js')}}"></script>
+		<!-- Owl Carousel JS -->
+        <script src="{{ url_for('static', filename = 'js/owl-carousel.js')}}"></script>
+		<!-- counterup JS -->
+		<script src="{{ url_for('static', filename = 'js/jquery.counterup.min.js')}}"></script>
+		<!-- Steller JS -->
+		<script src="{{ url_for('static', filename = 'js/steller.js')}}"></script>
+		<!-- Wow JS -->
+		<script src="{{ url_for('static', filename = 'js/wow.min.js')}}"></script>
+		<!-- Magnific Popup JS -->
+		<script src="{{ url_for('static', filename = 'js/jquery.magnific-popup.min.js')}}"></script>
+		<!-- Counter Up CDN JS -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="{{ url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+		<!-- Main JS -->
+		<script src="{{ url_for('static', filename = 'js/main.js')}}"></script>
+    </body>
+</html>
