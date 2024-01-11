@@ -2771,7 +2771,8 @@ body{
 	border: 1px solid #eee;
 	text-transform: capitalize;
 	padding: 0px 18px;
-	color: #999;
+	color: #757575;
+	background: #fff;
 	font-size: 14px;
 	font-weight:400;
 	border-radius: 4px;
