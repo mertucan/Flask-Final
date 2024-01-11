@@ -1,0 +1,89 @@
+{% extends 'base.html' %} 
+
+{% block title %} Home {% endblock %} 
+
+{% block content %}
+    <head>
+        {% include "parts/_head_content.html" %}
+    </head>
+    <body>
+	
+		<!-- Preloader -->
+        {% include "parts/_preloader.html"%}
+        <!-- End Preloader -->
+		
+		<!-- Get Pro Button -->
+		{% include "parts/_probutton.html" %}
+	
+		<!-- Header Area -->
+		<header class="header" >
+			<!-- Topbar -->
+			{% include "parts/_topbar.html"%}
+			<!-- End Topbar -->
+			{% include "parts/_header_inner.html" %}
+		</header>
+		<!-- End Header Area -->
+		
+		<!-- Slider Area -->
+		{% include "parts/_slider.html"%}
+		<!--/ End Slider Area -->
+		
+		<!-- Start Schedule Area -->
+		{% include "parts/_schedule.html"%}
+		<!--/End Start schedule Area -->
+
+		<!-- Start Feautes -->
+		{% include "parts/_featues.html"%}
+		<!--/ End Feautes -->
+		
+		<!-- Start Fun-facts -->
+		{% include "parts/_fun_facts.html"%}
+		<!--/ End Fun-facts -->
+		
+		<!-- Start Why choose -->
+		{% include "parts/_why_choose.html"%}
+		<!--/ End Why choose -->
+		
+		<!-- Start Call to action -->
+		{% include "parts/_call.html"%}
+		<!--/ End Call to action -->
+		
+		<!-- Start portfolio -->
+		{%include "parts/_portfolio.html"%}
+		<!--/ End portfolio -->
+		
+		<!-- Start service -->
+		{% include "parts/_service.html"%}
+		<!--/ End service -->
+		
+		<!-- Pricing Table -->
+		{% include "parts/_pricing.html"%}
+		<!--/ End Pricing Table -->
+		
+		<!-- Start Blog Area -->
+		{% include "parts/_blog.html"%}
+		<!-- End Blog Area -->
+		
+		<!-- Start clients -->
+		{% include "parts/_clients.html"%}
+		<!--/End clients -->
+		
+		<!-- Start Appointment -->
+		{% include "parts/_appointment.html"%}
+		<!-- End Appointment -->
+		
+		<!-- Start Newsletter Area -->
+		{% include "parts/_newsletter.html"%}
+		<!-- /End Newsletter Area -->
+		
+		<!-- Footer Area -->
+		<footer id="footer" class="footer ">
+			{% include "parts/_footer.html"%}
+		</footer>
+		<!--/ End Footer Area -->
+		
+		{% include "parts/_scripts.html"%}
+
+    </body>
+
+{% endblock %}
