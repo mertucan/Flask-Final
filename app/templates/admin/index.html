@@ -1,5 +1,8 @@
 {% extends 'admin/master.html'%}
 
 {%block body%}
-<h1>Deneme</h1>
+<h1>Welcome to the Admin Page!</h1>
+<li class="nav-item">
+    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+</li> 
 {%endblock%}
