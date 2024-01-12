@@ -3,7 +3,10 @@
 {% block title %} Home {% endblock %} 
 
 {% block content %}
-    <head>
+    
+{% if current_user.is_authenticated %}
+
+	<head>
         {% include "parts/_head_content.html" %}
     </head>
     <body>
@@ -81,5 +84,17 @@
 		{% include "parts/_scripts.html"%}
 
     </body>
+{% else %}
+
+<div class="py-5 text-center">
+	<h2>Welcome to Mediplus Website</h2>
+	<p class="lead">This is the main page of our Flask application.</p>
+	<img src="{{ url_for('static', filename='img/section-img.png') }}" alt="#">
+</div>
+
+<div style="text-align: center;">
+    <p class="text-center">Please <a href="{{url_for('login')}}">login</a> to view the website.</p>
+</div>
+{% endif %}
 
 {% endblock %}
