@@ -16,5 +16,34 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+class Doctors(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), index=True, unique=True)
+    department = db.Column(db.String(64), index=True)
+    
+class Appointment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True)
+    email = db.Column(db.String(120), index=True)
+    phone = db.Column(db.String(15), index=True)
+    doctor_name = db.Column(db.String(64), index=True)
+    date = db.Column(db.Date, index=True)
+    message = db.Column(db.String(256), index=True)
+    
+class Messages(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True)
+    email = db.Column(db.String(120), index=True)
+    phone = db.Column(db.String(15), index=True)
+    subject = db.Column(db.String(64), index=True)
+    message = db.Column(db.String(512), index = True)
+    
+class Blogs(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True)
+    surname = db.Column(db.String(64), index=True)
+    email = db.Column(db.String(120), index=True)
+    message = db.Column(db.String(512), index = True)
 
 # forms.py

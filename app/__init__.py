@@ -19,9 +19,9 @@ admin.init_app(app)
 babel.init_app(app)
 
 from app import views, models, db
-from app.models import User
+from app.models import User, Appointment, Doctors, Messages, Blogs
 
-"""if not 'User' in locals():
+if not 'User' in locals():
     class User(UserMixin, db.Model):
         id = db.Column(db.Integer, primary_key=True)
         username = db.Column(db.String(64), index=True, unique=True)
@@ -37,7 +37,48 @@ from app.models import User
         def check_password(self, password):
             return check_password_hash(self.password_hash, password)
     
-admin.add_view(ModelView(User, db.session))"""
+admin.add_view(ModelView(User, db.session))
+
+if not 'Doctors' in locals():
+    class Doctors(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        username = db.Column(db.String(64), index=True, unique=True)
+        department = db.Column(db.String(64), index=True)
+        
+admin.add_view(ModelView(Doctors, db.session))
+
+if not 'Appointment' in locals():
+    class Appointment(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(64), index=True)
+        email = db.Column(db.String(120), index=True)
+        phone = db.Column(db.String(15), index=True)
+        doctor_name = db.Column(db.String(64), index=True)
+        date = db.Column(db.Date, index=True)
+        message = db.Column(db.String(256), index=True)
+        
+admin.add_view(ModelView(Appointment, db.session))
+
+if not 'Messages' in locals():
+    class Messages(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(64), index=True)
+        email = db.Column(db.String(120), index=True)
+        phone = db.Column(db.String(15), index=True)
+        subject = db.Column(db.String(64), index=True)
+        message = db.Column(db.String(512), index = True)
+        
+admin.add_view(ModelView(Messages, db.session))
+        
+if not 'BlogPost' in locals():
+    class BlogPost(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(64), index=True)
+        surname = db.Column(db.String(64), index=True)
+        email = db.Column(db.String(120), index=True)
+        message = db.Column(db.String(512), index = True)
+        
+admin.add_view(ModelView(Blogs, db.session))
 
 @login_manager.user_loader
 def load_user(user_id):
