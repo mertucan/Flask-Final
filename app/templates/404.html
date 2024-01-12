@@ -1,5 +1,6 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
+{% extends 'base.html' %} {% block title %} 404 Error {% endblock %} 
+
+{% block content %}
     <head>
         <!-- Meta Tags -->
 		<meta charset="utf-8">
@@ -312,4 +313,4 @@
 		<!-- Main JS -->
 		<script src="{{ url_for('static', filename='js/main.js') }}"></script>
     </body>
-</html>
+{% endblock %}
