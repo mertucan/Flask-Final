@@ -20,7 +20,6 @@ class User(UserMixin, db.Model):
 class Doctors(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
-    department = db.Column(db.String(64), index=True)
     
 class Department(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, request, flash
 from app import app, db
 from app.forms import LoginForm, RegisterForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Department, Doctors
 
 @app.route('/')
 def index():
@@ -22,7 +22,9 @@ def portfolio():
 
 @app.route('/appointment')
 def appointment():
-    return render_template('appointment.html')
+    departments = Department.query.all()
+    doctors = Doctors.query.all()
+    return render_template('appointment.html', departments=departments, doctors=doctors)
   
 @app.route('/login', methods=['GET', 'POST'])
 def login():

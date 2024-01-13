@@ -31,11 +31,9 @@
                             <div class="form-group">
                                 <div class="nice-select form-control wide" tabindex="0"><span class="current">Department</span>
                                     <ul class="list">
-                                        <li data-value="1" class="option selected ">Department</li>
-                                        <li data-value="2" class="option">Cardiac Clinic</li>
-                                        <li data-value="3" class="option">Neurology</li>
-                                        <li data-value="4" class="option">Dentistry</li>
-                                        <li data-value="5" class="option">Gastroenterology</li>
+                                        {% for department in departments %}
+                                            <li data-value="{{ department.id }}" class="option">{{ department.department }}</li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
@@ -44,10 +42,9 @@
                             <div class="form-group">
                                 <div class="nice-select form-control wide" tabindex="0"><span class="current">Doctor</span>
                                     <ul class="list">
-                                        <li data-value="1" class="option selected ">Doctor</li>
-                                        <li data-value="2" class="option">Dr. Akther Hossain</li>
-                                        <li data-value="3" class="option">Dr. Dery Alex</li>
-                                        <li data-value="4" class="option">Dr. Jovis Karon</li>
+                                        {% for doctor in doctors %}
+                                            <li data-value="{{ doctor.id }}" class="option">{{ doctor.username }}</li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
