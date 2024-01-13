@@ -20,6 +20,14 @@ def blogs():
 def portfolio():
     return render_template('portfolio-details.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/learn')
+def learn():
+    return render_template('learn_more.html')
+
 @app.route('/appointment')
 def appointment():
     departments = Department.query.all()
