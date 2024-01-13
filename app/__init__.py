@@ -47,6 +47,14 @@ if not 'Doctors' in locals():
         
 admin.add_view(ModelView(Doctors, db.session))
 
+if not 'Department' in locals():
+    class Department(db.Model):
+        __table_args__ = {'extend_existing': True}
+        id = db.Column(db.Integer, primary_key=True)
+        department = db.Column(db.String(64), index=True)
+        
+admin.add_view(ModelView(Department, db.session))
+
 if not 'Appointment' in locals():
     class Appointment(db.Model):
         id = db.Column(db.Integer, primary_key=True)

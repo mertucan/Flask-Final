@@ -22,6 +22,10 @@ class Doctors(db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     department = db.Column(db.String(64), index=True)
     
+class Department(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    department = db.Column(db.String(64), index=True)
+    
 class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True)
