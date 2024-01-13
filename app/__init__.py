@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, render_template, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_admin import Admin
@@ -19,7 +19,7 @@ admin.init_app(app)
 babel.init_app(app)
 
 from app import views, models, db
-from app.models import User, Appointment, Doctors, Messages, Blogs
+from app.models import User, Appointment, Doctors, Messages, Blogs, Newsletter
 
 if not 'User' in locals():
     class User(UserMixin, db.Model):
@@ -87,6 +87,30 @@ if not 'BlogPost' in locals():
         message = db.Column(db.String(512), index = True)
         
 admin.add_view(ModelView(Blogs, db.session))
+
+if not 'Newsletter' in locals():
+    class Newsletter(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        email = db.Column(db.String(120), index=True)
+        
+admin.add_view(ModelView(Newsletter, db.session))
+
+@app.route('/_footer', methods=['POST'])
+def add_email_to_newsletter():
+    if request.method == 'POST':
+        email = request.form['email']
+        new_email = Newsletter(email=email)
+        try:
+            db.session.add(new_email)
+            db.session.commit()
+            flash('Email added to the newsletter successfully!', 'success')
+        except:
+            db.session.rollback()
+            flash('Error adding email to the newsletter!', 'danger')
+        finally:
+            db.session.close()
+            
+    return redirect(url_for('index'))
 
 @login_manager.user_loader
 def load_user(user_id):

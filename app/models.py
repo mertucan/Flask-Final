@@ -48,5 +48,9 @@ class Blogs(db.Model):
     surname = db.Column(db.String(64), index=True)
     email = db.Column(db.String(120), index=True)
     message = db.Column(db.String(512), index = True)
+    
+class Newsletter(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), index=True)
 
 # forms.py
