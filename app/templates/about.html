@@ -2,6 +2,10 @@
 
 {% block content %}
 
+{%include "parts/_head_content.html"%}
+
+{%include "parts/_preloader.html"%}
+
 <div class="responsive-container-block bigContainer">
   <div class="responsive-container-block Container">
     <p class="text-blk heading">
@@ -217,4 +221,6 @@
     }
   }
 </style>
+
+{%include "parts/_scripts.html"%}
 {% endblock %}

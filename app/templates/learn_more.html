@@ -1,6 +1,11 @@
 {% extends 'base.html' %} {% block title %} Learn More {% endblock %} 
 
 {% block content %}
+
+{%include "parts/_head_content.html"%}
+
+{%include "parts/_preloader.html"%}
+
 <div class="responsive-container-block bigContainer">
     <div class="responsive-container-block Container">
       <img class="mainImg" src="{{ url_for('static', filename='img/blog3.jpg') }}">
@@ -378,5 +383,6 @@
         }
       }
   </style>
+{%include "parts/_scripts.html"%}
 
 {%endblock%}
