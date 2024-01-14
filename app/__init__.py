@@ -6,6 +6,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_babel import Babel
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
@@ -132,6 +133,40 @@ def add_message():
             db.session.close()
             
     return redirect(url_for('contact'))
+
+@app.route('/appointment', methods=['POST'])
+def add_appointment():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        doctor_name = request.form['doctor_name']  # Değişiklik burada
+        date_str = request.form['date']
+
+        # Tarihi uygun bir Python tarih nesnesine çevir
+        try:
+            date = datetime.strptime(date_str, '%m/%d/%Y').date()
+        except ValueError:
+            print("Invalid date format")
+            # İsterseniz burada bir hata mesajı dönebilir veya başka bir işlem yapabilirsiniz.
+            return redirect(url_for('appointment'))
+
+        message = request.form['message']
+        new_appointment = Appointment(name=name, email=email, phone=phone, doctor_name=doctor_name, date=date, message=message)
+
+        try:
+            db.session.add(new_appointment)
+            db.session.commit()
+            flash('Appointment added to the appointments successfully!', 'success')
+        except Exception as e:
+            print(f"Error: {str(e)}")
+            db.session.rollback()
+            flash('Error adding appointment to the appointments!', 'danger')
+        finally:
+            db.session.close()
+
+    return redirect(url_for('appointment'))
+
 
 @login_manager.user_loader
 def load_user(user_id):

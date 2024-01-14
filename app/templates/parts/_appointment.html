@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-md-12 col-12">
-                <form class="form" action="#">
+                <form action="{{ url_for('add_appointment') }}" method="post" class="form">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
@@ -40,18 +40,17 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
-                                <div class="nice-select form-control wide" tabindex="0"><span class="current">Doctor</span>
-                                    <ul class="list">
-                                        {% for doctor in doctors %}
-                                            <li data-value="{{ doctor.id }}" class="option">{{ doctor.username }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                                <select name="doctor_name" class="nice-select form-control wide">
+                                    <option value="" disabled selected style="display:none">Doctors</option>
+                                    {% for doctor in doctors %}
+                                        <option value="{{ doctor.username }}">{{ doctor.username }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
-                        </div>
+                        </div>                            
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
-                                <input type="text" placeholder="Date" id="datepicker">
+                                <input type="text" name="date" placeholder="Date" id="datepicker">
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-12">
