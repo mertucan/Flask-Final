@@ -112,6 +112,27 @@ def add_email_to_newsletter():
             
     return redirect(url_for('index'))
 
+@app.route('/contact', methods=['POST'])
+def add_message():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        subject = request.form['subject']
+        message = request.form['message']
+        new_message = Messages(name=name, email=email, phone=phone, subject=subject, message=message)
+        try:
+            db.session.add(new_message)
+            db.session.commit()
+            flash('Message added to the messages successfully!', 'success')
+        except:
+            db.session.rollback()
+            flash('Error adding message to the messages!', 'danger')
+        finally:
+            db.session.close()
+            
+    return redirect(url_for('contact'))
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
