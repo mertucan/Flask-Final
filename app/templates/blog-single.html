@@ -115,43 +115,12 @@
 										<div class="single-comments">
 											<div class="main">
 												<div class="head">
-													<img src="{{ url_for('static', filename='img/author1.jpg') }}" alt="#">
-												</div>
-												<div class="body">
-													<h4>Afsana Mimi</h4>
-													<div class="comment-meta"><span class="meta"><i class="fa fa-calendar"></i>March 05, 2019</span><span class="meta"><i class="fa fa-clock-o"></i>03:38 AM</span></div>
-													<p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas</p>
-													<a href="#"><i class="fa fa-reply"></i>replay</a>
-												</div>
-											</div>
-										</div>		
-										<!--/ End Single Comments -->
-										<!-- Single Comments -->
-										<div class="single-comments left">
-											<div class="main">
-												<div class="head">
-													<img src="{{ url_for('static', filename='img/author2.jpg') }}" alt="#">
-												</div>
-												<div class="body">
-													<h4>Naimur Rahman</h4>
-													<div class="comment-meta"><span class="meta"><i class="fa fa-calendar"></i>March 05, 2019</span><span class="meta"><i class="fa fa-clock-o"></i>03:38 AM</span></div>
-													<p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas</p>
-													<a href="#"><i class="fa fa-reply"></i>replay</a>
-												</div>
-											</div>
-										</div>		
-										<!--/ End Single Comments -->
-										<!-- Single Comments -->
-										<div class="single-comments">
-											<div class="main">
-												<div class="head">
-													<img src="{{ url_for('static', filename='img/author3.jpg') }}" alt="#">
+													<img src="{{ url_for('static', filename='img/no-pp.png') }}" alt="#">
 												</div>
 												<div class="body">
 													<h4>Suriya Molharta</h4>
 													<div class="comment-meta"><span class="meta"><i class="fa fa-calendar"></i>March 05, 2019</span><span class="meta"><i class="fa fa-clock-o"></i>03:38 AM</span></div>
 													<p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas</p>
-													<a href="#"><i class="fa fa-reply"></i>replay</a>
 												</div>
 											</div>
 										</div>		
@@ -163,30 +132,26 @@
 								<div class="comments-form">
 									<h2>Leave Comments</h2>
 									<!-- Contact Form -->
-									<form class="form" method="post" action="mail/mail.php">
+									<form action="{{ url_for('add_comment') }}" method="post" class="form">
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-12">
+											<div class="col-lg-6">
 												<div class="form-group">
-													<i class="fa fa-user"></i>
-													<input type="text" name="first-name" placeholder="First name" required="required">
+													<input type="text" name="name" placeholder="Name" required="">
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-12">
+											<div class="col-lg-6">
 												<div class="form-group">
-													<i class="fa fa-envelope"></i>
-													<input type="text" name="last-name" placeholder="Last name" required="required">
+													<input type="text" name="surname" placeholder="Surname" required="">
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-12">
+											<div class="col-lg-6">
 												<div class="form-group">
-													<i class="fa fa-envelope"></i>
-													<input type="email" name="email" placeholder="Your Email" required="required">
+													<input type="email" name="email" placeholder="E-Mail" required="required">
 												</div>
 											</div>
-											<div class="col-12">
-												<div class="form-group message">
-													<i class="fa fa-pencil"></i>
-													<textarea name="message" rows="7" placeholder="Type Your Message Here" ></textarea>
+											<div class="col-lg-6">
+												<div class="form-group">
+													<textarea name="message" placeholder="Type your message here" required=""></textarea>
 												</div>
 											</div>
 											<div class="col-12">

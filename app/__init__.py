@@ -167,6 +167,25 @@ def add_appointment():
 
     return redirect(url_for('appointment'))
 
+@app.route('/blogs', methods=['POST'])
+def add_comment():
+    if request.method == 'POST':
+        name = request.form['name']
+        surname = request.form['surname']
+        email = request.form['email']
+        message = request.form['message']
+        new_comment = Blogs(name=name, surname=surname, email=email, message=message)
+        try:
+            db.session.add(new_comment)
+            db.session.commit()
+            flash('Comment added to the blogs successfully!', 'success')
+        except:
+            db.session.rollback()
+            flash('Error adding comment to the blogs!', 'danger')
+        finally:
+            db.session.close()
+            
+    return redirect(url_for('blogs'))
 
 @login_manager.user_loader
 def load_user(user_id):
