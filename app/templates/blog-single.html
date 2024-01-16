@@ -51,7 +51,7 @@
 										<img src="{{ url_for('static', filename='img/blog1.jpg') }}" alt="#">
 									</div>
 									<!-- News Title -->
-									<h1 class="news-title"><a href="news-single.html">More than 80 clinical trials launch to test of the coronavirus .</a></h1>
+									<h1 class="news-title"><a href="{{url_for('blogs')}}">More than 80 clinical trials launch to test of the coronavirus .</a></h1>
 									<!-- Meta -->
 									<div class="meta">
 										<div class="meta-left">
@@ -66,8 +66,7 @@
 									</div>
 									<!-- News Text -->
 									<div class="news-text">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis ultricies tortor, nec sollicitudin lorem sagittis vitae. Curabitur rhoncus commodo rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam nec lacus pulvinar, laoreet dolor quis, pellentesque ante. Cras nulla orci, pharetra at dictum consequat, pretium pretium nulla. Suspendisse porttitor nunc a sodales tempor. Mauris sed felis maximus, interdum metus vel, tincidunt diam.</p>
-										<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam nec lacus pulvinar, laoreet dolor quis, pellentesque ante. Cras nulla orci, pharetra at dictum consequat, pretium pretium nulla. Suspendisse porttitor nunc a sodales tempor. Mauris sed felis maximus, interdum metus vel, tincidunt diam. Nam ac risus vitae sem vehicula egestas. Sed velit nulla, viverra non commod</p>
+										<p>The ongoing global effort to combat the COVID-19 pandemic has led to the initiation of more than 80 clinical trials dedicated to testing and understanding the coronavirus. These trials encompass a wide range of research areas, including vaccine development, treatment strategies, and diagnostic methods.</p>
 										<div class="image-gallery">
 											<div class="row">
 												<div class="col-lg-6 col-md-6 col-12">
@@ -82,12 +81,10 @@
 												</div>
 											</div>
 										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis ultricies tortor, nec sollicitudin lorem sagittis vitae. Curabitur rhoncus commodo rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam nec lacus pulvinar, laoreet dolor quis, pellentesque ante. Cras nulla orci, pharetra at dictum consequat, pretium pretium nulla. Suspendisse porttitor nunc a sodales tempor. Mauris sed felis maximus, interdum metus vel, tincidunt diam.</p>
+										<p>In the race against time, researchers and healthcare professionals around the world have come together to conduct these clinical trials, each contributing valuable insights to the collective understanding of the virus. The trials aim not only to find effective vaccines and treatments but also to enhance our knowledge of the virus's behavior, transmission dynamics, and potential long-term effects on individuals.</p>
 										<blockquote class="overlay">
-											<p>Aliquam nec lacus pulvinar, laoreet dolor quis, pellentesque ante. Cras nulla orci, pharetra at dictum consequat, pretium pretium nulla. Suspendisse porttitor nunc a sodales tempor. Mauris sed felis maximus, interdum metus vel, tincidunt diam. Nam ac risus vitae sem vehicula egestas. Sed velit nulla, viverra non commodo et, sodales</p>					
+											<p>The collaboration between scientific communities, pharmaceutical companies, and healthcare institutions underscores the urgency and importance of finding solutions to the global health crisis. As these trials progress, the hope is that they will pave the way for breakthroughs that can mitigate the impact of the coronavirus and contribute to building a more resilient and prepared world for future health challenges. The commitment to scientific inquiry and innovation remains a beacon of hope in the midst of these challenging times.</p>					
 										</blockquote>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis ultricies tortor, nec sollicitudin lorem sagittis vitae. Curabitur rhoncus commodo rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam nec lacus pulvinar, laoreet dolor quis, pellentesque ante. Cras nulla orci, pharetra at dictum consequat, pretium pretium nulla. Suspendisse porttitor nunc a sodales tempor. Mauris sed felis maximus, interdum metus vel, tincidunt diam. Nam ac risus vitae sem vehicula egestas. Sed velit nulla, viverra non commodo et, sodales id dui.</p>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis ultricies tortor, nec sollicitudin lorem sagittis vitae. Curabitur rhoncus commodo rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam nec lacus pulvinar, laoreet dolor quis, pellentesque ante. Cras nulla orci, pharetra at dictum consequat, pretium pretium nulla. Suspendisse</p>
 									</div>
 									<div class="blog-bottom">
 										<!-- Social Share -->
@@ -172,8 +169,8 @@
 							<!-- Single Widget -->
 							<div class="single-widget search">
 								<div class="form">
-									<input type="email" placeholder="Search Here...">
-									<a class="button" href="#"><i class="fa fa-search"></i></a>
+									<input type="text" id="searchInput" placeholder="Search Here...">
+									<a class="button" href="#" onclick="highlightSearch()"><i class="fa fa-search"></i></a>
 								</div>
 							</div>
 							<!--/ End Single Widget -->
@@ -269,4 +266,46 @@
 		
 		{% include "parts/_scripts.html"%}
     </body>
+
+
+	<style>
+        .highlight {
+            background-color: yellow;
+			color: black;
+        }
+    </style>
+
+	<script>
+		function highlightSearch() {
+			// Kullanıcının girdiği arama kelimesini al
+			var searchTerm = document.getElementById('searchInput').value;
+			
+			// Tüm sayfa içinde arama yap
+			var pageContent = document.body.innerHTML;
+			
+			// Arama kelimesine uyan tüm index'leri bul
+			var indexes = findAllIndexes(pageContent, searchTerm);
+			
+			
+			// Her bir index'teki kelimenin etrafını sarı renkte vurgula
+			indexes.forEach(function(index) {
+				var startTag = '<span class="highlight">';
+				var endTag = '</span>';
+				pageContent = pageContent.slice(0, index) + startTag + pageContent.slice(index, index + searchTerm.length) + endTag + pageContent.slice(index + searchTerm.length);
+			});
+	
+			// Sayfa içeriğini güncelle
+			document.body.innerHTML = pageContent;
+		}
+	
+		function findAllIndexes(str, term) {
+			var indexes = [];
+			var index = str.indexOf(term);
+			while (index !== -1) {
+				indexes.push(index);
+				index = str.indexOf(term, index + 1);
+			}
+			return indexes;
+		}
+	</script>
 {% endblock %}
