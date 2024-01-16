@@ -111,6 +111,7 @@
 								<div class="blog-comments">
 									<h2>All Comments</h2>
 									<div class="comments-body">
+										{% for comment in comments %}
 										<!-- Single Comments -->
 										<div class="single-comments">
 											<div class="main">
@@ -118,13 +119,13 @@
 													<img src="{{ url_for('static', filename='img/no-pp.png') }}" alt="#">
 												</div>
 												<div class="body">
-													<h4>Suriya Molharta</h4>
-													<div class="comment-meta"><span class="meta"><i class="fa fa-calendar"></i>March 05, 2019</span><span class="meta"><i class="fa fa-clock-o"></i>03:38 AM</span></div>
-													<p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas</p>
+													<h4>{{ comment.name }} {{ comment.surname }}</h4>
+													<p>{{ comment.message }}</p>
 												</div>
 											</div>
-										</div>		
-										<!--/ End Single Comments -->											
+										</div>
+										<!--/ End Single Comments -->
+										{% endfor %}
 									</div>
 								</div>
 							</div>
