@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, request, flash
 from app import app, db
 from app.forms import LoginForm, RegisterForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Department, Doctors, Blogs
+from app.models import User, Department, Doctors, Blogs, BlogTags, Categories
 
 @app.route('/')
 def index():
@@ -15,7 +15,9 @@ def contact():
 @app.route('/blogs')
 def blogs():
     comments = Blogs.query.all()
-    return render_template('blog-single.html', comments=comments)
+    tags = BlogTags.query.all()
+    categories = Categories.query.all()
+    return render_template('blog-single.html', comments=comments, tags=tags, categories=categories)
 
 @app.route('/portfolio')
 def portfolio():

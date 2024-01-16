@@ -49,6 +49,14 @@ class Blogs(db.Model):
     email = db.Column(db.String(120), index=True)
     message = db.Column(db.String(512), index = True)
     
+class BlogTags(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    tags = db.Column(db.String(64), index=True)
+    
+class Categories(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    categories = db.Column(db.String(64), index=True)
+    
 class Newsletter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), index=True)

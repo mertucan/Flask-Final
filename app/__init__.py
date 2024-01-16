@@ -20,7 +20,7 @@ admin.init_app(app)
 babel.init_app(app)
 
 from app import views, models, db
-from app.models import User, Appointment, Doctors, Messages, Blogs, Newsletter
+from app.models import User, Appointment, Doctors, Messages, Blogs, Newsletter, BlogTags, Categories
 
 if not 'User' in locals():
     class User(UserMixin, db.Model):
@@ -95,6 +95,21 @@ if not 'Newsletter' in locals():
         email = db.Column(db.String(120), index=True)
         
 admin.add_view(ModelView(Newsletter, db.session))
+
+if not 'BlogTags' in locals():
+    class BlogTags(db.Model):
+        __tablename__ = 'blog_tags'
+        id = db.Column(db.Integer, primary_key=True)
+        tags = db.Column(db.String(64), index=True)
+        
+admin.add_view(ModelView(BlogTags, db.session))
+
+if not 'Categories' in locals():
+    class Categories(db.Model):
+        id = db.Column(db.Integer, primary_key = True)
+        categories = db.Column(db.String(64), index=True)
+        
+admin.add_view(ModelView(Categories, db.session))
 
 @app.route('/_footer', methods=['POST'])
 def add_email_to_newsletter():
