@@ -171,13 +171,12 @@ MediCare-Flask/
 ## 📱 Application Screenshots
 
 ### Main Medical Homepage
-<!-- Add your screenshot here -->
+
+<img width="2762" height="1283" alt="Ekran görüntüsü 2025-07-27 214722" src="https://github.com/user-attachments/assets/5afa472b-824a-4442-bb99-94ead0b99ad3" />
 
 ### Medical Admin Panel
-<!-- Add your screenshot here -->
 
-### Patient Appointment Dashboard
-<!-- Add your screenshot here -->
+<img width="2787" height="965" alt="Ekran görüntüsü 2025-07-27 214814" src="https://github.com/user-attachments/assets/9445997e-b2b0-4ccc-b02e-cde8f50404c2" />
 
 ### Homepage Features
 The medical application starts with a comprehensive homepage featuring:
